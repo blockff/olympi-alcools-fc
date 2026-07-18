@@ -411,6 +411,22 @@
       }
     }
 .botao-gols {
+
+  </style>
+</head>
+
+<body>
+<script>
+function mostrarGols() {
+
+  const lista = document.getElementById("lista-gols");
+
+  if (lista.style.display === "block") {
+    lista.style.display = "none";
+  } else {
+    lista.style.display = "block";
+  }
+.botao-gols {
   display: block;
   margin: 25px auto 0;
   padding: 14px 25px;
@@ -447,21 +463,6 @@
   padding: 8px;
   border-bottom: 1px solid #333;
 }
-  </style>
-</head>
-
-<body>
-<script>
-function mostrarGols() {
-
-  const lista = document.getElementById("lista-gols");
-
-  if (lista.style.display === "block") {
-    lista.style.display = "none";
-  } else {
-    lista.style.display = "block";
-  }
-
 }
         </script>
   <header>
