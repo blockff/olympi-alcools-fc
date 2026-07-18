@@ -410,12 +410,60 @@
         grid-template-columns: 1fr;
       }
     }
+.botao-gols {
+  display: block;
+  margin: 25px auto 0;
+  padding: 14px 25px;
+  background: #d4af37;
+  color: #050505;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+.botao-gols:hover {
+  background: #ffffff;
+}
+
+.lista-gols {
+  display: none;
+  max-width: 400px;
+  margin: 20px auto 0;
+  padding: 20px;
+  background: #191919;
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.lista-gols h3 {
+  color: #d4af37;
+  margin-bottom: 15px;
+}
+
+.lista-gols p {
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
   </style>
 </head>
 
 <body>
+<script>
+function mostrarGols() {
 
+  const lista = document.getElementById("lista-gols");
+
+  if (lista.style.display === "block") {
+    lista.style.display = "none";
+  } else {
+    lista.style.display = "block";
+  }
+
+}
+        </script>
   <header>
 
     <div class="nav">
@@ -519,7 +567,22 @@
         <p class="vitoria">
           Vitória do Olympi Álcools FC 🔥⚽
         </p>
+<button class="botao-gols" onclick="mostrarGols()">
+  ⚽ Ver quem fez os gols
+</button>
 
+<div id="lista-gols" class="lista-gols">
+
+  <h3>⚽ Gols do Olympi Álcools FC</h3>
+
+  <p>⚽ Cris — <strong>4 gols</strong></p>
+  <p>⚽ David — <strong>4 gols</strong></p>
+  <p>⚽ Charles — <strong>3 gols</strong></p>
+  <p>⚽ Anderson — <strong>2 gols</strong></p>
+  <p>⚽ Vitor — <strong>1 gol</strong></p>
+  <p>⚽ Pietro — <strong>1 gol</strong></p>
+
+</div>
 
         <div class="artilheiros">
 
