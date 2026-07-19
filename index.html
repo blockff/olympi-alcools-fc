@@ -971,4 +971,569 @@
 
         <div class="card">
 
-         
+            <h3>
+                🤝 Seja Sócio
+            </h3>
+
+            <p>
+
+                Faça parte da nossa família
+                e ajude o Olympi Álcools FC
+                a crescer cada vez mais.
+
+            </p>
+
+            <a
+                class="botao"
+                href="https://wa.me/5548996854243?text=Olá!%20Quero%20ser%20sócio%20do%20Olympi%20Álcools%20FC."
+                target="_blank">
+
+                Quero Ser Sócio
+
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                ⚽ Marque um Jogo
+            </h3>
+
+            <p>
+
+                Seu time quer enfrentar
+                o Olympi?
+
+                Entre em contato e vamos
+                marcar esse confronto.
+
+            </p>
+
+            <a
+                class="botao"
+                href="https://wa.me/5548996854243?text=Olá!%20Quero%20marcar%20um%20jogo%20contra%20o%20Olympi%20Álcools%20FC."
+                target="_blank">
+
+                Marcar Jogo
+
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                📣 Apoie o Time
+            </h3>
+
+            <p>
+
+                Acompanhe nossas partidas,
+                resultados e novidades
+                nas nossas redes sociais.
+
+            </p>
+
+            <a
+                class="botao"
+                href="https://instagram.com/olympi_alcools_fc"
+                target="_blank">
+
+                Instagram
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="patrocinador">
+
+    <div class="patrocinador">
+
+        <h2 class="titulo">
+
+            Seja um Patrocinador
+
+        </h2>
+
+        <p>
+
+            Sua empresa pode fazer parte
+            da história do
+
+            <strong>
+                Olympi Álcools FC
+            </strong>.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Estamos buscando parceiros
+            que acreditam no esporte,
+            na amizade e no crescimento
+            do nosso projeto.
+
+        </p>
+
+        <br>
+
+        <a
+            class="botao"
+            href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20ser%20patrocinador%20do%20Olympi%20Álcools%20FC."
+            target="_blank">
+
+            💰 Quero Ser Patrocinador
+
+        </a>
+
+    </div>
+
+</section>
+
+<section id="contato">
+
+    <h2 class="titulo">
+        Entre em Contato
+    </h2>
+
+    <div class="contato">
+
+        <p>
+
+            📱 WhatsApp:
+
+            <a
+                href="https://wa.me/5548996854243"
+                target="_blank">
+
+                (48) 99685-4243
+
+            </a>
+
+        </p>
+
+        <p>
+
+            📸 Instagram:
+
+            <a
+                href="https://instagram.com/olympi_alcools_fc"
+                target="_blank">
+
+                @olympi_alcools_fc
+
+            </a>
+
+        </p>
+
+        <br>
+
+        <a
+            class="botao"
+            href="https://wa.me/5548996854243"
+            target="_blank">
+
+            💬 Falar com o Olympi Álcools FC
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <img
+        src="logo.png"
+        alt="Olympi Álcools FC">
+
+    <p>
+        © 2026 Olympi Álcools FC
+    </p>
+
+    <p>
+        Futebol, Amizade e Resenha.
+    </p>
+
+</footer>
+
+<script>
+
+    /*
+    ==========================================
+    CONFIGURAÇÃO DO SUPABASE
+    ==========================================
+    */
+
+    const SUPABASE_URL =
+        "https://ivkugyhmbhsqecglvigb.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+        "sb_publishable_6wxR3-DEjbbwK9kD1_KXbQ_IzSlbPTx";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+        );
+
+
+    /*
+    ==========================================
+    MOSTRAR / ESCONDER GOLS
+    ==========================================
+    */
+
+    function mostrarGols() {
+
+        const lista =
+            document.getElementById(
+                "listaGols"
+            );
+
+        if (
+            lista.style.display === "block"
+        ) {
+
+            lista.style.display = "none";
+
+        } else {
+
+            lista.style.display = "block";
+
+        }
+
+    }
+
+
+    /*
+    ==========================================
+    CARREGAR ÚLTIMO RESULTADO
+    ==========================================
+    */
+
+    async function carregarResultado() {
+
+        const placar =
+            document.getElementById(
+                "placarResultado"
+            );
+
+        const adversario =
+            document.getElementById(
+                "adversarioResultado"
+            );
+
+        const golsLista =
+            document.getElementById(
+                "golsLista"
+            );
+
+        const status =
+            document.getElementById(
+                "statusResultado"
+            );
+
+
+        try {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("resultados")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending: false
+                    }
+                )
+                .limit(1);
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data || data.length === 0) {
+
+                placar.innerHTML =
+                    "Nenhum resultado";
+
+                adversario.innerHTML =
+                    "Ainda não há resultados cadastrados.";
+
+                golsLista.innerHTML =
+                    "<li>Nenhum gol cadastrado.</li>";
+
+                status.innerHTML =
+                    "Nenhum resultado encontrado.";
+
+                return;
+
+            }
+
+
+            const resultado =
+                data[0];
+
+
+            /*
+            Os nomes abaixo correspondem
+            às colunas usadas no banco.
+            */
+
+            const nomeAdversario =
+                resultado.adversario ||
+                "Adversário";
+
+
+            const golsOlympi =
+                resultado.gols_olympi ??
+                0;
+
+
+            const golsAdversario =
+                resultado.gols_adversario ??
+                0;
+
+
+            placar.innerHTML =
+                `OLYMPI ÁLCOOLS FC<br>${golsOlympi} x ${golsAdversario}`;
+
+
+            adversario.innerHTML =
+                nomeAdversario;
+
+
+            /*
+            Se você tiver uma coluna chamada
+            "gols" contendo texto, ela será exibida.
+
+            Exemplo:
+            Cris — 4 gols
+            David — 4 gols
+            */
+
+            if (resultado.gols) {
+
+                golsLista.innerHTML =
+                    `<li>${resultado.gols}</li>`;
+
+            } else {
+
+                golsLista.innerHTML =
+                    "<li>Informações dos gols ainda não cadastradas.</li>";
+
+            }
+
+
+            status.innerHTML =
+                "Resultado carregado do Supabase.";
+
+        } catch (error) {
+
+            console.error(
+                "Erro ao carregar resultado:",
+                error
+            );
+
+            placar.innerHTML =
+                "Erro ao carregar";
+
+            adversario.innerHTML =
+                "Verifique a conexão com o Supabase.";
+
+            status.innerHTML =
+                "Não foi possível carregar o resultado.";
+
+        }
+
+    }
+
+
+    /*
+    ==========================================
+    CARREGAR PRÓXIMO JOGO
+    ==========================================
+    */
+
+    async function carregarProximoJogo() {
+
+        const nomeAdversario =
+            document.getElementById(
+                "nomeAdversario"
+            );
+
+        const dataJogo =
+            document.getElementById(
+                "dataJogo"
+            );
+
+        const horarioJogo =
+            document.getElementById(
+                "horarioJogo"
+            );
+
+        const localJogo =
+            document.getElementById(
+                "localJogo"
+            );
+
+        const intro =
+            document.getElementById(
+                "proximoIntro"
+            );
+
+        const status =
+            document.getElementById(
+                "statusJogo"
+            );
+
+
+        try {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("proximos_jogos")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending: false
+                    }
+                )
+                .limit(1);
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data || data.length === 0) {
+
+                nomeAdversario.innerHTML =
+                    "A definir";
+
+                dataJogo.innerHTML =
+                    "A definir";
+
+                horarioJogo.innerHTML =
+                    "A definir";
+
+                localJogo.innerHTML =
+                    "A definir";
+
+                intro.innerHTML =
+                    "Em breve divulgaremos os detalhes do próximo confronto.";
+
+                status.innerHTML =
+                    "Nenhum próximo jogo cadastrado.";
+
+                return;
+
+            }
+
+
+            const jogo =
+                data[0];
+
+
+            /*
+            Nomes das colunas esperadas:
+
+            adversario
+            data_jogo
+            horario
+            local
+            */
+
+
+            nomeAdversario.innerHTML =
+                jogo.adversario ||
+                "A definir";
+
+
+            dataJogo.innerHTML =
+                jogo.data_jogo ||
+                "A definir";
+
+
+            horarioJogo.innerHTML =
+                jogo.horario ||
+                "A definir";
+
+
+            localJogo.innerHTML =
+                jogo.local ||
+                "A definir";
+
+
+            intro.innerHTML =
+                "Confira os detalhes do nosso próximo confronto.";
+
+
+            status.innerHTML =
+                "Próximo jogo carregado do Supabase.";
+
+        } catch (error) {
+
+            console.error(
+                "Erro ao carregar próximo jogo:",
+                error
+            );
+
+            nomeAdversario.innerHTML =
+                "Erro";
+
+            dataJogo.innerHTML =
+                "Erro";
+
+            horarioJogo.innerHTML =
+                "Erro";
+
+            localJogo.innerHTML =
+                "Erro";
+
+            status.innerHTML =
+                "Não foi possível carregar o próximo jogo.";
+
+        }
+
+    }
+
+
+    /*
+    ==========================================
+    INICIAR SITE
+    ==========================================
+    */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            carregarResultado();
+
+            carregarProximoJogo();
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
