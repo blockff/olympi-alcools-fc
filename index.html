@@ -12,11 +12,10 @@
 
     <title>Olympi Álcools FC | Site Oficial</title>
 
-    <style>
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        /* =========================
-           CONFIGURAÇÕES GERAIS
-        ========================= */
+    <style>
 
         * {
             margin: 0;
@@ -50,11 +49,6 @@
         a {
             -webkit-tap-highlight-color: transparent;
         }
-
-
-        /* =========================
-           MENU
-        ========================= */
 
         header {
             position: sticky;
@@ -108,11 +102,6 @@
             color: var(--dourado-claro);
         }
 
-
-        /* =========================
-           HERO
-        ========================= */
-
         .hero {
             min-height: 85vh;
             display: flex;
@@ -147,11 +136,6 @@
             margin-bottom: 30px;
         }
 
-
-        /* =========================
-           BOTÕES
-        ========================= */
-
         .botao {
             display: inline-block;
             padding: 13px 25px;
@@ -184,11 +168,6 @@
             border: 1px solid var(--dourado);
         }
 
-
-        /* =========================
-           SEÇÕES
-        ========================= */
-
         section {
             width: 100%;
             max-width: 1200px;
@@ -204,11 +183,6 @@
             margin-bottom: 40px;
         }
 
-
-        /* =========================
-           HISTÓRIA
-        ========================= */
-
         .historia {
             text-align: center;
             max-width: 850px;
@@ -219,11 +193,6 @@
         .historia strong {
             color: var(--dourado-claro);
         }
-
-
-        /* =========================
-           RESULTADO
-        ========================= */
 
         .resultado-box {
             max-width: 850px;
@@ -282,11 +251,6 @@
             padding: 6px 0;
             border-bottom: 1px solid #222;
         }
-
-
-        /* =========================
-           PRÓXIMO JOGO
-        ========================= */
 
         .proximo {
             width: 100%;
@@ -358,11 +322,6 @@
             color: var(--dourado-claro);
         }
 
-
-        /* =========================
-           UNIFORMES
-        ========================= */
-
         .uniformes {
             display: grid;
             grid-template-columns:
@@ -394,11 +353,6 @@
             padding: 0 15px;
         }
 
-
-        /* =========================
-           CARDS
-        ========================= */
-
         .cards {
             display: grid;
             grid-template-columns:
@@ -419,11 +373,6 @@
             margin-bottom: 10px;
         }
 
-
-        /* =========================
-           PATROCINADOR
-        ========================= */
-
         .patrocinador {
             text-align: center;
             background:
@@ -436,11 +385,6 @@
             border-radius: 20px;
             padding: 50px 20px;
         }
-
-
-        /* =========================
-           CONTATO
-        ========================= */
 
         .contato {
             text-align: center;
@@ -455,11 +399,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
 
         footer {
             background: #020202;
@@ -477,10 +416,11 @@
             color: #aaa;
         }
 
-
-        /* =========================
-           TABLET
-        ========================= */
+        .status {
+            color: #aaa;
+            margin-top: 15px;
+            font-size: 14px;
+        }
 
         @media (max-width: 800px) {
 
@@ -505,10 +445,6 @@
                 display: flex;
                 justify-content: center;
                 gap: 8px 15px;
-            }
-
-            .navbar li {
-                line-height: 1.2;
             }
 
             .navbar a {
@@ -550,11 +486,6 @@
                 scroll-margin-top: 155px;
             }
         }
-
-
-        /* =========================
-           CELULAR
-        ========================= */
 
         @media (max-width: 500px) {
 
@@ -648,823 +579,396 @@
     </style>
 </head>
 
-
 <body>
 
+<header>
 
-    <!-- =========================
-         MENU
-    ========================= -->
+    <nav class="navbar">
 
-    <header>
+        <a href="#inicio" class="logo-link">
 
-        <nav class="navbar">
+            <img
+                src="logo.png"
+                class="logo-menu"
+                alt="Logo Olympi Álcools FC">
 
-            <a href="#inicio" class="logo-link">
+        </a>
 
-                <img
-                    src="logo.png"
-                    class="logo-menu"
-                    alt="Logo Olympi Álcools FC">
+        <ul>
 
-            </a>
+            <li>
+                <a href="#inicio">Início</a>
+            </li>
 
+            <li>
+                <a href="#historia">História</a>
+            </li>
 
-            <ul>
+            <li>
+                <a href="#resultado">Resultados</a>
+            </li>
+
+            <li>
+                <a href="#jogos">Jogos</a>
+            </li>
+
+            <li>
+                <a href="#uniformes">Uniformes</a>
+            </li>
+
+            <li>
+                <a href="#contato">Contato</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>
+            Olympi Álcools FC
+        </h1>
+
+        <p>
+            Futebol, Amizade e Resenha.
+
+            <br><br>
+
+            Um time que nasceu da união,
+            da paixão pelo futebol
+            e da vontade de construir
+            uma história juntos.
+        </p>
+
+        <a
+            href="#jogos"
+            class="botao">
+
+            Ver Próximo Jogo
+
+        </a>
+
+        <a
+            href="#patrocinador"
+            class="botao botao-secundario">
+
+            Seja Nosso Patrocinador
+
+        </a>
+
+    </div>
+
+</section>
+
+<section id="historia">
+
+    <h2 class="titulo">
+        Nossa História
+    </h2>
+
+    <div class="historia">
+
+        <p>
+
+            O
+            <strong>
+                Olympi Álcools FC
+            </strong>
+            nasceu muito mais do que como
+            um simples time de futebol.
+
+            Nasceu da amizade,
+            da união e da paixão
+            por aquele esporte que é capaz
+            de juntar pessoas diferentes
+            em torno de um único objetivo.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Começamos pequenos,
+            com um sonho grande:
+
+            construir uma equipe
+            forte, respeitada e conhecida
+            dentro e fora das quatro linhas.
+
+            Cada jogo representa uma nova
+            oportunidade de crescer,
+            aprender e escrever mais uma
+            página da nossa história.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Nosso lema é simples:
+
+            <strong>
+                Futebol, Amizade e Resenha.
+            </strong>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Porque para nós, vencer é importante.
+
+            Mas construir amizades,
+            viver grandes momentos
+            e nunca abandonar
+            quem está ao nosso lado
+            é o que realmente faz
+            o Olympi Álcools FC
+            ser especial.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section id="resultado">
+
+    <h2 class="titulo">
+        Último Resultado
+    </h2>
+
+    <div class="resultado-box">
+
+        <div class="resultado-label">
+            RESULTADO FINAL
+        </div>
+
+        <div class="placar" id="placarResultado">
+            Carregando...
+        </div>
+
+        <div class="adversario" id="adversarioResultado">
+            Aguarde...
+        </div>
+
+        <button
+            class="botao"
+            onclick="mostrarGols()">
+
+            ⚽ Ver Quem Fez os Gols
+
+        </button>
+
+        <div
+            class="gols"
+            id="listaGols">
+
+            <h3>
+                ⚽ Gols do Olympi Álcools FC
+            </h3>
+
+            <ul id="golsLista">
 
                 <li>
-                    <a href="#inicio">
-                        Início
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#historia">
-                        História
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#resultado">
-                        Resultados
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#jogos">
-                        Jogos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#uniformes">
-                        Uniformes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#contato">
-                        Contato
-                    </a>
+                    Carregando gols...
                 </li>
 
             </ul>
 
-        </nav>
-
-    </header>
-
-
-
-    <!-- =========================
-         INÍCIO
-    ========================= -->
-
-    <section
-        class="hero"
-        id="inicio">
-
-        <div class="hero-content">
-
-            <h1>
-                Olympi Álcools FC
-            </h1>
-
-            <p>
-
-                Futebol, Amizade e Resenha.
-
-                <br><br>
-
-                Um time que nasceu da união,
-                da paixão pelo futebol
-                e da vontade de construir
-                uma história juntos.
-
-            </p>
-
-
-            <a
-                href="#jogos"
-                class="botao">
-
-                Ver Próximo Jogo
-
-            </a>
-
-
-            <a
-                href="#patrocinador"
-                class="botao botao-secundario">
-
-                Seja Nosso Patrocinador
-
-            </a>
-
         </div>
 
-    </section>
+        <div class="status" id="statusResultado"></div>
 
+    </div>
 
+</section>
 
-    <!-- =========================
-         HISTÓRIA
-    ========================= -->
+<section id="jogos">
 
-    <section id="historia">
+    <h2 class="titulo">
+        Próximo Jogo
+    </h2>
 
-        <h2 class="titulo">
-            Nossa História
-        </h2>
+    <div class="proximo">
 
+        <p class="proximo-intro" id="proximoIntro">
 
-        <div class="historia">
+            Carregando informações
+            do próximo confronto...
 
-            <p>
-
-                O
-                <strong>
-                    Olympi Álcools FC
-                </strong>
-                nasceu muito mais do que como
-                um simples time de futebol.
-
-                Nasceu da amizade,
-                da união e da paixão
-                por aquele esporte que é capaz
-                de juntar pessoas diferentes
-                em torno de um único objetivo.
-
-            </p>
-
-
-            <br>
-
-
-            <p>
-
-                Começamos pequenos,
-                com um sonho grande:
-
-                construir uma equipe
-                forte, respeitada e conhecida
-                dentro e fora das quatro linhas.
-
-                Cada jogo representa uma nova
-                oportunidade de crescer,
-                aprender e escrever mais uma
-                página da nossa história.
-
-            </p>
-
-
-            <br>
-
-
-            <p>
-
-                Nosso lema é simples:
-
-                <strong>
-                    Futebol, Amizade e Resenha.
-                </strong>
-
-            </p>
-
-
-            <br>
-
-
-            <p>
-
-                Porque para nós, vencer é importante.
-
-                Mas construir amizades,
-                viver grandes momentos
-                e nunca abandonar
-                quem está ao nosso lado
-                é o que realmente faz
-                o Olympi Álcools FC
-                ser especial.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         RESULTADO
-    ========================= -->
-
-    <section id="resultado">
-
-        <h2 class="titulo">
-            Último Resultado
-        </h2>
-
-
-        <div class="resultado-box">
-
-            <div class="resultado-label">
-                RESULTADO FINAL
-            </div>
-
-
-            <div class="placar">
-                OLYMPI ÁLCOOLS FC
-                <br>
-                15 x 4
-            </div>
-
-
-            <div class="adversario">
-                Carrossel FC
-            </div>
-
-
-            <button
-                class="botao"
-                onclick="mostrarGols()">
-
-                ⚽ Ver Quem Fez os Gols
-
-            </button>
-
-
-            <div
-                class="gols"
-                id="listaGols">
-
-                <h3>
-                    ⚽ Gols do Olympi Álcools FC
-                </h3>
-
-
-                <ul>
-
-                    <li>
-                        ⚽
-                        <strong>
-                            Cris
-                        </strong>
-                        — 4 gols
-                    </li>
-
-                    <li>
-                        ⚽
-                        <strong>
-                            David
-                        </strong>
-                        — 4 gols
-                    </li>
-
-                    <li>
-                        ⚽
-                        <strong>
-                            Charles
-                        </strong>
-                        — 3 gols
-                    </li>
-
-                    <li>
-                        ⚽
-                        <strong>
-                            Anderson
-                        </strong>
-                        — 2 gols
-                    </li>
-
-                    <li>
-                        ⚽
-                        <strong>
-                            Vitor
-                        </strong>
-                        — 1 gol
-                    </li>
-
-                    <li>
-                        ⚽
-                        <strong>
-                            Pietro
-                        </strong>
-                        — 1 gol
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         PRÓXIMO JOGO
-    ========================= -->
-
-    <section id="jogos">
-
-        <h2 class="titulo">
-            Próximo Jogo
-        </h2>
-
-
-        <div class="proximo">
-
-
-            <p class="proximo-intro">
-
-                Em breve divulgaremos os detalhes
-                do próximo confronto.
-
-            </p>
-
-
-            <div class="confronto">
-
-
-                <div class="time">
-
-                    <img
-                        src="logo.png"
-                        alt="Olympi Álcools FC">
-
-                    <h3>
-                        Olympi Álcools FC
-                    </h3>
-
-                </div>
-
-
-                <div class="vs">
-                    VS
-                </div>
-
-
-                <div class="time">
-
-                    <img
-                        src="carrossel-fc.png"
-                        alt="Carrossel FC">
-
-                    <h3>
-                        Carrossel FC
-                    </h3>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="detalhes-jogo">
-
-
-                <div class="detalhe">
-
-                    📅
-                    <strong>
-                        Data:
-                    </strong>
-
-                    A definir
-
-                </div>
-
-
-                <div class="detalhe">
-
-                    ⏰
-                    <strong>
-                        Horário:
-                    </strong>
-
-                    A definir
-
-                </div>
-
-
-                <div class="detalhe">
-
-                    📍
-                    <strong>
-                        Local:
-                    </strong>
-
-                    A definir
-
-                </div>
-
-
-            </div>
-
-
-
-            <a
-                class="botao"
-                href="https://wa.me/5548996854243?text=Olá!%20Gostaria%20de%20marcar%20um%20jogo%20contra%20o%20Olympi%20Álcools%20FC."
-                target="_blank">
-
-                🗓️ Marcar Jogo
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         UNIFORMES
-    ========================= -->
-
-    <section id="uniformes">
-
-        <h2 class="titulo">
-            Nossos Uniformes
-        </h2>
-
-
-        <div class="uniformes">
-
-
-            <div class="uniforme-card">
-
-
-                <img
-                    src="uniforme-jogador.png"
-                    alt="Uniforme de jogador do Olympi Álcools FC">
-
-
-                <h3>
-                    Uniforme Oficial de Jogador
-                </h3>
-
-
-                <p>
-                    Vista as cores do
-                    Olympi Álcools FC.
-                </p>
-
-
-                <a
-                    class="botao"
-                    href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20comprar%20o%20uniforme%20do%20Olympi%20Álcools%20FC."
-                    target="_blank">
-
-                    🛒 Comprar Uniforme
-
-                </a>
-
-            </div>
-
-
-
-            <div class="uniforme-card">
-
-
-                <img
-                    src="uniforme-goleiro.png"
-                    alt="Uniforme de goleiro do Olympi Álcools FC">
-
-
-                <h3>
-                    Uniforme Oficial de Goleiro
-                </h3>
-
-
-                <p>
-                    O paredão também veste Olympi.
-                </p>
-
-
-                <a
-                    class="botao"
-                    href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20comprar%20o%20uniforme%20de%20goleiro%20do%20Olympi%20Álcools%20FC."
-                    target="_blank">
-
-                    🛒 Comprar Uniforme
-
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         FAÇA PARTE
-    ========================= -->
-
-    <section>
-
-        <h2 class="titulo">
-            Faça Parte do Olympi
-        </h2>
-
-
-        <div class="cards">
-
-
-            <div class="card">
-
-                <h3>
-                    🤝 Seja Sócio
-                </h3>
-
-                <p>
-
-                    Faça parte da nossa família
-                    e ajude o Olympi Álcools FC
-                    a crescer cada vez mais.
-
-                </p>
-
-
-                <a
-                    class="botao"
-                    href="https://wa.me/5548996854243?text=Olá!%20Quero%20ser%20sócio%20do%20Olympi%20Álcools%20FC."
-                    target="_blank">
-
-                    Quero Ser Sócio
-
-                </a>
-
-            </div>
-
-
-
-            <div class="card">
-
-                <h3>
-                    ⚽ Marque um Jogo
-                </h3>
-
-                <p>
-
-                    Seu time quer enfrentar
-                    o Olympi?
-
-                    Entre em contato e vamos
-                    marcar esse confronto.
-
-                </p>
-
-
-                <a
-                    class="botao"
-                    href="https://wa.me/5548996854243?text=Olá!%20Quero%20marcar%20um%20jogo%20contra%20o%20Olympi%20Álcools%20FC."
-                    target="_blank">
-
-                    Marcar Jogo
-
-                </a>
-
-            </div>
-
-
-
-            <div class="card">
-
-                <h3>
-                    📣 Apoie o Time
-                </h3>
-
-                <p>
-
-                    Acompanhe nossas partidas,
-                    resultados e novidades
-                    nas nossas redes sociais.
-
-                </p>
-
-
-                <a
-                    class="botao"
-                    href="https://instagram.com/olympi_alcools_fc"
-                    target="_blank">
-
-                    Instagram
-
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         PATROCINADOR
-    ========================= -->
-
-    <section id="patrocinador">
-
-
-        <div class="patrocinador">
-
-
-            <h2 class="titulo">
-
-                Seja um Patrocinador
-
-            </h2>
-
-
-            <p>
-
-                Sua empresa pode fazer parte
-                da história do
-
-                <strong>
-                    Olympi Álcools FC
-                </strong>.
-
-            </p>
-
-
-            <br>
-
-
-            <p>
-
-                Estamos buscando parceiros
-                que acreditam no esporte,
-                na amizade e no crescimento
-                do nosso projeto.
-
-            </p>
-
-
-            <br>
-
-
-            <a
-                class="botao"
-                href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20ser%20patrocinador%20do%20Olympi%20Álcools%20FC."
-                target="_blank">
-
-                💰 Quero Ser Patrocinador
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         CONTATO
-    ========================= -->
-
-    <section id="contato">
-
-        <h2 class="titulo">
-            Entre em Contato
-        </h2>
-
-
-        <div class="contato">
-
-
-            <p>
-
-                📱 WhatsApp:
-
-                <a
-                    href="https://wa.me/5548996854243"
-                    target="_blank">
-
-                    (48) 99685-4243
-
-                </a>
-
-            </p>
-
-
-            <p>
-
-                📸 Instagram:
-
-                <a
-                    href="https://instagram.com/olympi_alcools_fc"
-                    target="_blank">
-
-                    @olympi_alcools_fc
-
-                </a>
-
-            </p>
-
-
-            <br>
-
-
-            <a
-                class="botao"
-                href="https://wa.me/5548996854243"
-                target="_blank">
-
-                💬 Falar com o Olympi Álcools FC
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         RODAPÉ
-    ========================= -->
-
-    <footer>
-
-
-        <img
-            src="logo.png"
-            alt="Olympi Álcools FC">
-
-
-        <p>
-            © 2026 Olympi Álcools FC
         </p>
 
+        <div class="confronto">
 
-        <p>
-            Futebol, Amizade e Resenha.
-        </p>
+            <div class="time">
 
+                <img
+                    src="logo.png"
+                    alt="Olympi Álcools FC">
 
-    </footer>
+                <h3>
+                    Olympi Álcools FC
+                </h3>
 
+            </div>
 
+            <div class="vs">
+                VS
+            </div>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+            <div class="time">
 
-    <script>
+                <img
+                    id="logoAdversario"
+                    src="carrossel-fc.png"
+                    alt="Adversário">
 
-        function mostrarGols() {
+                <h3 id="nomeAdversario">
+                    Carregando...
+                </h3>
 
-            const lista =
-                document.getElementById(
-                    "listaGols"
-                );
+            </div>
 
-            if (
-                lista.style.display ===
-                "block"
-            ) {
+        </div>
 
-                lista.style.display =
-                    "none";
+        <div class="detalhes-jogo">
 
-            } else {
+            <div class="detalhe">
 
-                lista.style.display =
-                    "block";
+                📅
+                <strong>
+                    Data:
+                </strong>
 
-            }
+                <span id="dataJogo">
+                    A definir
+                </span>
 
-        }
+            </div>
 
-    </script>
+            <div class="detalhe">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+                ⏰
+                <strong>
+                    Horário:
+                </strong>
 
-<script>
-    const SUPABASE_URL = "https://ivkugyhmbhsqecglvigb.supabase.co";
+                <span id="horarioJogo">
+                    A definir
+                </span>
 
-    const SUPABASE_ANON_KEY = "COLE_SUA_CHAVE_PUBLICAVEL_AQUI";
+            </div>
 
-    const supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
-    );
+            <div class="detalhe">
 
-    console.log("Supabase conectado!");
-</script>
-</body>
+                📍
+                <strong>
+                    Local:
+                </strong>
 
-</html>
+                <span id="localJogo">
+                    A definir
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="botao"
+            href="https://wa.me/5548996854243?text=Olá!%20Gostaria%20de%20marcar%20um%20jogo%20contra%20o%20Olympi%20Álcools%20FC."
+            target="_blank">
+
+            🗓️ Marcar Jogo
+
+        </a>
+
+        <div class="status" id="statusJogo"></div>
+
+    </div>
+
+</section>
+
+<section id="uniformes">
+
+    <h2 class="titulo">
+        Nossos Uniformes
+    </h2>
+
+    <div class="uniformes">
+
+        <div class="uniforme-card">
+
+            <img
+                src="uniforme-jogador.png"
+                alt="Uniforme de jogador do Olympi Álcools FC">
+
+            <h3>
+                Uniforme Oficial de Jogador
+            </h3>
+
+            <p>
+                Vista as cores do
+                Olympi Álcools FC.
+            </p>
+
+            <a
+                class="botao"
+                href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20comprar%20o%20uniforme%20do%20Olympi%20Álcools%20FC."
+                target="_blank">
+
+                🛒 Comprar Uniforme
+
+            </a>
+
+        </div>
+
+        <div class="uniforme-card">
+
+            <img
+                src="uniforme-goleiro.png"
+                alt="Uniforme de goleiro do Olympi Álcools FC">
+
+            <h3>
+                Uniforme Oficial de Goleiro
+            </h3>
+
+            <p>
+                O paredão também veste Olympi.
+            </p>
+
+            <a
+                class="botao"
+                href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20comprar%20o%20uniforme%20de%20goleiro%20do%20Olympi%20Álcools%20FC."
+                target="_blank">
+
+                🛒 Comprar Uniforme
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="titulo">
+        Faça Parte do Olympi
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+         
