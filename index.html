@@ -1451,7 +1451,20 @@
 
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+    const SUPABASE_URL = "https://ivkugyhmbhsqecglvigb.supabase.co";
+
+    const SUPABASE_ANON_KEY = "COLE_SUA_CHAVE_PUBLICAVEL_AQUI";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+    console.log("Supabase conectado!");
+</script>
 </body>
 
 </html>
