@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Olympi Álcools FC | Site Oficial</title>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
 
 * {
     margin: 0;
@@ -22,33 +32,48 @@ body {
     line-height: 1.6;
 }
 
-/* CORES */
-
 :root {
     --preto: #050505;
     --preto2: #111111;
     --dourado: #d4a72c;
     --dourado-claro: #f5d76e;
     --branco: #ffffff;
+    --cinza: #aaaaaa;
 }
 
-/* MENU */
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================
+   MENU
+========================= */
 
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(5,5,5,0.97);
+    background: rgba(5, 5, 5, 0.97);
     border-bottom: 1px solid #8f7020;
+    backdrop-filter: blur(10px);
 }
 
 .navbar {
     max-width: 1200px;
     margin: auto;
     padding: 12px 20px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 }
 
 .logo-menu {
@@ -59,8 +84,12 @@ header {
 
 .navbar ul {
     list-style: none;
+
     display: flex;
     gap: 20px;
+
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .navbar a {
@@ -74,82 +103,134 @@ header {
     color: var(--dourado-claro);
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 85vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
-    padding: 50px 20px;
+
+    padding: 60px 20px;
+
     background:
-        linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)),
-        url("logo.png") center/contain no-repeat;
+        linear-gradient(
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.94)
+        ),
+        url("logo.png")
+        center/contain
+        no-repeat;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 850px;
 }
 
 .hero h1 {
     font-size: 55px;
     color: var(--dourado-claro);
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 25px rgba(245,215,110,.2);
 }
 
 .hero p {
     font-size: 20px;
     margin-bottom: 25px;
+    color: #eeeeee;
 }
+
+
+/* =========================
+   BOTÕES
+========================= */
 
 .botao {
     display: inline-block;
+
     padding: 13px 25px;
     margin: 7px;
-    background: linear-gradient(135deg, #b8860b, #f5d76e);
+
+    background:
+        linear-gradient(
+            135deg,
+            #b8860b,
+            #f5d76e
+        );
+
     color: #050505;
+
     text-decoration: none;
+
     border-radius: 8px;
+
     font-weight: bold;
+
     border: none;
+
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 .botao:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(212,167,44,.4);
+
+    box-shadow:
+        0 5px 20px
+        rgba(212,167,44,.4);
 }
 
 .botao-secundario {
     background: transparent;
+
     color: white;
+
     border: 1px solid var(--dourado);
 }
 
-/* SEÇÕES */
+
+/* =========================
+   SEÇÕES
+========================= */
 
 section {
     max-width: 1200px;
+
     margin: auto;
+
     padding: 80px 20px;
 }
 
 .titulo {
     text-align: center;
+
     color: var(--dourado-claro);
+
     font-size: 35px;
+
     margin-bottom: 40px;
 }
 
-/* HISTÓRIA */
+
+/* =========================
+   HISTÓRIA
+========================= */
 
 .historia {
     text-align: center;
+
     max-width: 850px;
+
     margin: auto;
+
     font-size: 18px;
 }
 
@@ -157,28 +238,49 @@ section {
     color: var(--dourado-claro);
 }
 
-/* RESULTADO */
+
+/* =========================
+   RESULTADO
+========================= */
 
 .resultado-box {
     max-width: 850px;
+
     margin: auto;
-    background: linear-gradient(145deg, #111, #050505);
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #050505
+        );
+
     border: 1px solid #8f7020;
+
     border-radius: 20px;
+
     padding: 40px 20px;
+
     text-align: center;
-    box-shadow: 0 0 30px rgba(212,167,44,.1);
+
+    box-shadow:
+        0 0 30px
+        rgba(212,167,44,.1);
 }
 
 .resultado-label {
     color: #aaa;
+
     font-size: 18px;
 }
 
 .placar {
     font-size: 65px;
+
     font-weight: bold;
+
     color: var(--dourado-claro);
+
     margin: 10px 0;
 }
 
@@ -188,16 +290,25 @@ section {
 
 .gols {
     display: none;
+
     margin-top: 30px;
+
     background: #0c0c0c;
+
     border-radius: 12px;
+
     padding: 20px;
+
     text-align: left;
-    border-left: 3px solid var(--dourado);
+
+    border-left:
+        3px solid
+        var(--dourado);
 }
 
 .gols h3 {
     color: var(--dourado-claro);
+
     margin-bottom: 10px;
 }
 
@@ -206,107 +317,224 @@ section {
 }
 
 .gols li {
-    padding: 6px 0;
-    border-bottom: 1px solid #222;
+    padding: 8px 0;
+
+    border-bottom:
+        1px solid
+        #222;
 }
 
-/* PRÓXIMO JOGO */
+
+/* =========================
+   PRÓXIMO JOGO
+========================= */
 
 .proximo {
     text-align: center;
+
     background: #0c0c0c;
+
     border-radius: 20px;
+
     padding: 40px 20px;
+
     border: 1px solid #8f7020;
+
+    box-shadow:
+        0 0 30px
+        rgba(212,167,44,.08);
+}
+
+.status-jogo {
+    color: #cccccc;
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
 }
 
 .confronto {
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 40px;
+
     margin: 25px 0;
 }
 
 .time {
     text-align: center;
+
+    min-width: 150px;
 }
 
 .time img {
     width: 120px;
+
     height: 120px;
+
     object-fit: contain;
+
+    margin-bottom: 10px;
 }
 
 .time h3 {
-    margin-top: 10px;
+    margin-top: 5px;
+
+    color: white;
 }
 
 .vs {
     font-size: 30px;
+
     color: var(--dourado-claro);
+
     font-weight: bold;
 }
 
-/* UNIFORMES */
+.detalhes-jogo {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin: 20px auto;
+
+    max-width: 800px;
+}
+
+.detalhe {
+    background: #151515;
+
+    border:
+        1px solid
+        #5f4b18;
+
+    border-radius: 10px;
+
+    padding: 12px 18px;
+
+    color: #eeeeee;
+}
+
+.jogo-vazio {
+    color: #aaa;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   UNIFORMES
+========================= */
 
 .uniformes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 30px;
 }
 
 .uniforme-card {
     background: #0c0c0c;
+
     border: 1px solid #8f7020;
+
     border-radius: 18px;
+
     overflow: hidden;
+
     text-align: center;
+
     padding-bottom: 25px;
 }
 
 .uniforme-card img {
     width: 100%;
+
     display: block;
 }
 
 .uniforme-card h3 {
     color: var(--dourado-claro);
+
     margin: 20px 0 10px;
 }
 
-/* ÁREAS */
+.uniforme-card p {
+    padding: 0 20px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 20px;
 }
 
 .card {
     background: #0d0d0d;
+
     border: 1px solid #70591d;
+
     padding: 30px 20px;
+
     border-radius: 15px;
+
     text-align: center;
 }
 
 .card h3 {
     color: var(--dourado-claro);
+
     margin-bottom: 10px;
 }
 
-/* PATROCINADOR */
+
+/* =========================
+   PATROCINADOR
+========================= */
 
 .patrocinador {
     text-align: center;
-    background: linear-gradient(145deg, #111, #050505);
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #050505
+        );
+
     border: 1px solid #8f7020;
+
     border-radius: 20px;
+
     padding: 50px 20px;
 }
 
-/* CONTATO */
+.patrocinador strong {
+    color: var(--dourado-claro);
+}
+
+
+/* =========================
+   CONTATO
+========================= */
 
 .contato {
     text-align: center;
@@ -318,42 +546,62 @@ section {
 
 .contato a {
     color: var(--dourado-claro);
+
     text-decoration: none;
+
     font-weight: bold;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     background: #020202;
-    border-top: 1px solid #70591d;
+
+    border-top:
+        1px solid
+        #70591d;
+
     text-align: center;
+
     padding: 35px 20px;
 }
 
 footer img {
     width: 90px;
+
     margin-bottom: 10px;
 }
 
 footer p {
     color: #aaa;
+
+    margin: 5px;
 }
 
-/* RESPONSIVO */
+
+/* =========================
+   RESPONSIVO
+========================= */
 
 @media (max-width: 800px) {
 
     .navbar {
         flex-direction: column;
+
         gap: 10px;
     }
 
     .navbar ul {
-        flex-wrap: wrap;
-        justify-content: center;
         gap: 12px;
+
         font-size: 14px;
+    }
+
+    .hero {
+        min-height: 75vh;
     }
 
     .hero h1 {
@@ -365,7 +613,7 @@ footer p {
     }
 
     .placar {
-        font-size: 50px;
+        font-size: 45px;
     }
 
     .uniformes {
@@ -380,38 +628,92 @@ footer p {
         gap: 15px;
     }
 
+    .time {
+        min-width: 100px;
+    }
+
     .time img {
         width: 90px;
+
         height: 90px;
     }
 
     .vs {
         font-size: 22px;
     }
+
+    .detalhes-jogo {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- MENU -->
+
+<!-- =========================
+     MENU
+========================= -->
 
 <header>
 
 <nav class="navbar">
 
 <a href="#inicio">
-<img src="logo.png" class="logo-menu" alt="Logo Olympi Álcools FC">
+
+<img
+src="logo.png"
+class="logo-menu"
+alt="Logo Olympi Álcools FC">
+
 </a>
 
+
 <ul>
-<li><a href="#inicio">Início</a></li>
-<li><a href="#historia">História</a></li>
-<li><a href="#resultado">Resultados</a></li>
-<li><a href="#jogos">Jogos</a></li>
-<li><a href="#uniformes">Uniformes</a></li>
-<li><a href="#contato">Contato</a></li>
+
+<li>
+<a href="#inicio">
+Início
+</a>
+</li>
+
+<li>
+<a href="#historia">
+História
+</a>
+</li>
+
+<li>
+<a href="#resultado">
+Resultados
+</a>
+</li>
+
+<li>
+<a href="#jogos">
+Jogos
+</a>
+</li>
+
+<li>
+<a href="#uniformes">
+Uniformes
+</a>
+</li>
+
+<li>
+<a href="#contato">
+Contato
+</a>
+</li>
+
 </ul>
 
 </nav>
@@ -419,27 +721,49 @@ footer p {
 </header>
 
 
-<!-- INÍCIO -->
+<!-- =========================
+     INÍCIO
+========================= -->
 
-<section class="hero" id="inicio">
+<section
+class="hero"
+id="inicio">
 
 <div class="hero-content">
 
-<h1>Olympi Álcools FC</h1>
+<h1>
+Olympi Álcools FC
+</h1>
 
 <p>
-Futebol, Amizade e Resenha.
+
+<strong>Futebol, Amizade e Resenha.</strong>
+
 <br>
-Um time que nasceu da união, da paixão pelo futebol
-e da vontade de construir uma história juntos.
+
+Um time que nasceu da união,
+da paixão pelo futebol
+e da vontade de construir
+uma história juntos.
+
 </p>
 
-<a href="#jogos" class="botao">
+
+<a
+href="#jogos"
+class="botao">
+
 Ver Próximo Jogo
+
 </a>
 
-<a href="#patrocinador" class="botao botao-secundario">
+
+<a
+href="#patrocinador"
+class="botao botao-secundario">
+
 Seja Nosso Patrocinador
+
 </a>
 
 </div>
@@ -447,44 +771,80 @@ Seja Nosso Patrocinador
 </section>
 
 
-<!-- HISTÓRIA -->
+<!-- =========================
+     HISTÓRIA
+========================= -->
 
 <section id="historia">
 
-<h2 class="titulo">Nossa História</h2>
+<h2 class="titulo">
+
+Nossa História
+
+</h2>
+
 
 <div class="historia">
 
 <p>
-O <strong>Olympi Álcools FC</strong> nasceu muito mais do que como
-um simples time de futebol. Nasceu da amizade, da união e da paixão
-por aquele esporte que é capaz de juntar pessoas diferentes em torno
-de um único objetivo.
+
+O <strong>Olympi Álcools FC</strong>
+nasceu muito mais do que como
+um simples time de futebol.
+
+Nasceu da amizade,
+da união e da paixão
+por aquele esporte que é capaz
+de juntar pessoas diferentes
+em torno de um único objetivo.
+
 </p>
 
 <br>
 
 <p>
-Começamos pequenos, com um sonho grande: construir uma equipe
-forte, respeitada e conhecida dentro e fora das quatro linhas.
-Cada jogo representa uma nova oportunidade de crescer,
-aprender e escrever mais uma página da nossa história.
+
+Começamos pequenos,
+com um sonho grande:
+construir uma equipe forte,
+respeitada e conhecida
+dentro e fora das quatro linhas.
+
+Cada jogo representa
+uma nova oportunidade
+de crescer, aprender
+e escrever mais uma página
+da nossa história.
+
 </p>
 
 <br>
 
 <p>
+
 Nosso lema é simples:
-<strong>Futebol, Amizade e Resenha.</strong>
+
+<strong>
+Futebol, Amizade e Resenha.
+</strong>
+
 </p>
 
 <br>
 
 <p>
-Porque para nós, vencer é importante.
-Mas construir amizades, viver grandes momentos e nunca abandonar
-quem está ao nosso lado é o que realmente faz o Olympi Álcools FC
+
+Porque para nós,
+vencer é importante.
+
+Mas construir amizades,
+viver grandes momentos
+e nunca abandonar
+quem está ao nosso lado
+é o que realmente faz
+o Olympi Álcools FC
 ser especial.
+
 </p>
 
 </div>
@@ -492,47 +852,94 @@ ser especial.
 </section>
 
 
-<!-- RESULTADO -->
+<!-- =========================
+     ÚLTIMO RESULTADO
+========================= -->
 
 <section id="resultado">
 
-<h2 class="titulo">Último Resultado</h2>
+<h2 class="titulo">
+
+Último Resultado
+
+</h2>
+
 
 <div class="resultado-box">
 
 <div class="resultado-label">
+
 RESULTADO FINAL
+
 </div>
+
 
 <div class="placar">
+
 OLYMPI ÁLCOOLS FC 15 x 4
+
 </div>
+
 
 <div class="adversario">
+
 Carrossel FC
+
 </div>
 
-<button class="botao" onclick="mostrarGols()">
+
+<button
+class="botao"
+onclick="mostrarGols()">
+
 ⚽ Ver Quem Fez os Gols
+
 </button>
 
-<div class="gols" id="listaGols">
 
-<h3>⚽ Gols do Olympi Álcools FC</h3>
+<div
+class="gols"
+id="listaGols">
+
+
+<h3>
+
+⚽ Gols do Olympi Álcools FC
+
+</h3>
+
 
 <ul>
 
-<li>⚽ <strong>Cris</strong> — 4 gols</li>
+<li>
+⚽ <strong>Cris</strong>
+— 4 gols
+</li>
 
-<li>⚽ <strong>David</strong> — 4 gols</li>
+<li>
+⚽ <strong>David</strong>
+— 4 gols
+</li>
 
-<li>⚽ <strong>Charles</strong> — 3 gols</li>
+<li>
+⚽ <strong>Charles</strong>
+— 3 gols
+</li>
 
-<li>⚽ <strong>Anderson</strong> — 2 gols</li>
+<li>
+⚽ <strong>Anderson</strong>
+— 2 gols
+</li>
 
-<li>⚽ <strong>Vitor</strong> — 1 gol</li>
+<li>
+⚽ <strong>Vitor</strong>
+— 1 gol
+</li>
 
-<li>⚽ <strong>Pietro</strong> — 1 gol</li>
+<li>
+⚽ <strong>Pietro</strong>
+— 1 gol
+</li>
 
 </ul>
 
@@ -543,59 +950,142 @@ Carrossel FC
 </section>
 
 
-<!-- PRÓXIMO JOGO -->
+<!-- =========================
+     PRÓXIMO JOGO
+========================= -->
 
 <section id="jogos">
 
-<h2 class="titulo">Próximo Jogo</h2>
+<h2 class="titulo">
+
+Próximo Jogo
+
+</h2>
+
 
 <div class="proximo">
 
-<p>Em breve divulgaremos os detalhes do próximo confronto.</p>
 
-<div class="confronto">
+<p
+id="mensagem-jogo"
+class="status-jogo">
+
+Carregando informações
+do próximo jogo...
+
+</p>
+
+
+<div
+class="confronto"
+id="confronto-jogo">
+
 
 <div class="time">
 
-<img src="logo.png" alt="Olympi Álcools FC">
+<img
+src="logo.png"
+alt="Olympi Álcools FC">
 
-<h3>Olympi Álcools FC</h3>
+<h3>
+
+Olympi Álcools FC
+
+</h3>
 
 </div>
+
 
 <div class="vs">
+
 VS
+
 </div>
+
 
 <div class="time">
 
-<img src="carrossel-fc.png" alt="Carrossel FC">
+<img
+id="logo-adversario"
+src="carrossel-fc.png"
+alt="Escudo do adversário">
 
-<h3>Carrossel FC</h3>
+<h3
+id="nome-adversario">
+
+A definir
+
+</h3>
 
 </div>
 
 </div>
+
+
+<div
+class="detalhes-jogo"
+id="detalhes-jogo">
+
+
+<div
+class="detalhe"
+id="data-jogo">
+
+📅 Data: A definir
+
+</div>
+
+
+<div
+class="detalhe"
+id="horario-jogo">
+
+⏰ Horário: A definir
+
+</div>
+
+
+<div
+class="detalhe"
+id="local-jogo">
+
+📍 Local: A definir
+
+</div>
+
+</div>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243?text=Olá!%20Gostaria%20de%20marcar%20um%20jogo%20contra%20o%20Olympi%20Álcools%20FC."
 target="_blank">
+
 🗓️ Marcar Jogo
+
 </a>
+
 
 </div>
 
 </section>
 
 
-<!-- UNIFORMES -->
+<!-- =========================
+     UNIFORMES
+========================= -->
 
 <section id="uniformes">
 
-<h2 class="titulo">Nossos Uniformes</h2>
+<h2 class="titulo">
+
+Nossos Uniformes
+
+</h2>
+
 
 <div class="uniformes">
+
 
 <div class="uniforme-card">
 
@@ -603,15 +1093,30 @@ target="_blank">
 src="uniforme-jogador.png"
 alt="Uniforme de jogador do Olympi Álcools FC">
 
-<h3>Uniforme Oficial de Jogador</h3>
 
-<p>Vista as cores do Olympi Álcools FC.</p>
+<h3>
+
+Uniforme Oficial
+de Jogador
+
+</h3>
+
+
+<p>
+
+Vista as cores
+do Olympi Álcools FC.
+
+</p>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20comprar%20o%20uniforme%20do%20Olympi%20Álcools%20FC."
 target="_blank">
+
 🛒 Comprar Uniforme
+
 </a>
 
 </div>
@@ -623,46 +1128,81 @@ target="_blank">
 src="uniforme-goleiro.png"
 alt="Uniforme de goleiro do Olympi Álcools FC">
 
-<h3>Uniforme Oficial de Goleiro</h3>
 
-<p>O paredão também veste Olympi.</p>
+<h3>
+
+Uniforme Oficial
+de Goleiro
+
+</h3>
+
+
+<p>
+
+O paredão também
+veste Olympi.
+
+</p>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20comprar%20o%20uniforme%20de%20goleiro%20do%20Olympi%20Álcools%20FC."
 target="_blank">
+
 🛒 Comprar Uniforme
+
 </a>
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- SÓCIO / APOIO -->
+<!-- =========================
+     FAÇA PARTE
+========================= -->
 
 <section>
 
-<h2 class="titulo">Faça Parte do Olympi</h2>
+<h2 class="titulo">
+
+Faça Parte do Olympi
+
+</h2>
+
 
 <div class="cards">
 
+
 <div class="card">
 
-<h3>🤝 Seja Sócio</h3>
+<h3>
+
+🤝 Seja Sócio
+
+</h3>
+
 
 <p>
-Faça parte da nossa família e ajude o Olympi Álcools FC
+
+Faça parte da nossa família
+e ajude o Olympi Álcools FC
 a crescer cada vez mais.
+
 </p>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243?text=Olá!%20Quero%20ser%20sócio%20do%20Olympi%20Álcools%20FC."
 target="_blank">
+
 Quero Ser Sócio
+
 </a>
 
 </div>
@@ -670,18 +1210,32 @@ Quero Ser Sócio
 
 <div class="card">
 
-<h3>⚽ Marque um Jogo</h3>
+<h3>
+
+⚽ Marque um Jogo
+
+</h3>
+
 
 <p>
-Seu time quer enfrentar o Olympi?
-Entre em contato e vamos marcar esse confronto.
+
+Seu time quer enfrentar
+o Olympi?
+
+Entre em contato
+e vamos marcar
+esse confronto.
+
 </p>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243?text=Olá!%20Quero%20marcar%20um%20jogo%20contra%20o%20Olympi%20Álcools%20FC."
 target="_blank">
+
 Marcar Jogo
+
 </a>
 
 </div>
@@ -689,139 +1243,482 @@ Marcar Jogo
 
 <div class="card">
 
-<h3>📣 Apoie o Time</h3>
+<h3>
+
+📣 Apoie o Time
+
+</h3>
+
 
 <p>
-Acompanhe nossas partidas, resultados e novidades
+
+Acompanhe nossas partidas,
+resultados e novidades
 nas nossas redes sociais.
+
 </p>
+
 
 <a
 class="botao"
 href="https://instagram.com/olympi_alcools_fc"
 target="_blank">
+
 Instagram
+
 </a>
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- PATROCINADOR -->
+<!-- =========================
+     PATROCINADOR
+========================= -->
 
-<section id="patrocinador">
+<section
+id="patrocinador">
 
-<div class="patrocinador">
+
+<div
+class="patrocinador">
+
 
 <h2 class="titulo">
+
 Seja um Patrocinador
+
 </h2>
 
+
 <p>
-Sua empresa pode fazer parte da história do
-<strong>Olympi Álcools FC</strong>.
+
+Sua empresa pode fazer parte
+da história do
+<strong>
+Olympi Álcools FC
+</strong>.
+
 </p>
+
 
 <br>
 
+
 <p>
-Estamos buscando parceiros que acreditam no esporte,
-na amizade e no crescimento do nosso projeto.
+
+Estamos buscando parceiros
+que acreditam no esporte,
+na amizade e no crescimento
+do nosso projeto.
+
 </p>
 
+
 <br>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243?text=Olá!%20Tenho%20interesse%20em%20ser%20patrocinador%20do%20Olympi%20Álcools%20FC."
 target="_blank">
+
 💰 Quero Ser Patrocinador
+
 </a>
+
 
 </div>
 
 </section>
 
 
-<!-- CONTATO -->
+<!-- =========================
+     CONTATO
+========================= -->
 
 <section id="contato">
 
-<h2 class="titulo">Entre em Contato</h2>
+
+<h2 class="titulo">
+
+Entre em Contato
+
+</h2>
+
 
 <div class="contato">
 
+
 <p>
+
 📱 WhatsApp:
+
 <a
 href="https://wa.me/5548996854243"
 target="_blank">
+
 (48) 99685-4243
+
 </a>
+
 </p>
 
+
 <p>
+
 📸 Instagram:
+
 <a
 href="https://instagram.com/olympi_alcools_fc"
 target="_blank">
+
 @olympi_alcools_fc
+
 </a>
+
 </p>
 
+
 <br>
+
 
 <a
 class="botao"
 href="https://wa.me/5548996854243"
 target="_blank">
+
 💬 Falar com o Olympi Álcools FC
+
 </a>
+
 
 </div>
 
 </section>
 
 
-<!-- RODAPÉ -->
+<!-- =========================
+     RODAPÉ
+========================= -->
 
 <footer>
 
-<img src="logo.png" alt="Olympi Álcools FC">
+
+<img
+src="logo.png"
+alt="Olympi Álcools FC">
+
 
 <p>
+
 © 2026 Olympi Álcools FC
+
 </p>
 
+
 <p>
+
 Futebol, Amizade e Resenha.
+
 </p>
+
+
+<p>
+
+📍 Cocal do Sul - Santa Catarina
+
+</p>
+
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
+
+/* =========================
+   CONFIGURAÇÃO SUPABASE
+========================= */
+
+const SUPABASE_URL =
+"https://ivkugyhmbhsqecglvigb.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_6wxR3-DEjbbwK9kD1_KXbQ_IzSlbPTx";
+
+
+const supabaseClient =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* =========================
+   MOSTRAR GOLS
+========================= */
 
 function mostrarGols() {
 
-    const lista = document.getElementById("listaGols");
+    const lista =
+        document.getElementById(
+            "listaGols"
+        );
 
-    if (lista.style.display === "block") {
+    if (
+        lista.style.display ===
+        "block"
+    ) {
 
-        lista.style.display = "none";
+        lista.style.display =
+            "none";
 
     } else {
 
-        lista.style.display = "block";
+        lista.style.display =
+            "block";
 
     }
 
 }
 
+
+/* =========================
+   CARREGAR PRÓXIMO JOGO
+========================= */
+
+async function carregarProximoJogo() {
+
+    const mensagem =
+        document.getElementById(
+            "mensagem-jogo"
+        );
+
+    const adversario =
+        document.getElementById(
+            "nome-adversario"
+        );
+
+    const logo =
+        document.getElementById(
+            "logo-adversario"
+        );
+
+    const data =
+        document.getElementById(
+            "data-jogo"
+        );
+
+    const horario =
+        document.getElementById(
+            "horario-jogo"
+        );
+
+    const local =
+        document.getElementById(
+            "local-jogo"
+        );
+
+
+    try {
+
+
+        const resposta =
+            await supabaseClient
+
+            .from(
+                "proximos_jogos"
+            )
+
+            .select("*")
+
+            .order(
+                "data_jogo",
+                {
+                    ascending: true
+                }
+            )
+
+            .order(
+                "horario",
+                {
+                    ascending: true
+                }
+            )
+
+            .limit(1);
+
+
+        const jogos =
+            resposta.data;
+
+        const error =
+            resposta.error;
+
+
+        if (error) {
+
+            console.error(
+                "Erro Supabase:",
+                error
+            );
+
+            mensagem.textContent =
+                "Não foi possível carregar o próximo jogo.";
+
+            return;
+
+        }
+
+
+        if (
+            !jogos ||
+            jogos.length === 0
+        ) {
+
+            mensagem.textContent =
+                "⚽ Ainda não temos um próximo jogo marcado.";
+
+            adversario.textContent =
+                "A definir";
+
+            data.textContent =
+                "📅 Data: A definir";
+
+            horario.textContent =
+                "⏰ Horário: A definir";
+
+            local.textContent =
+                "📍 Local: Cocal do Sul - SC";
+
+            logo.src =
+                "carrossel-fc.png";
+
+            return;
+
+        }
+
+
+        const jogo =
+            jogos[0];
+
+
+        mensagem.textContent =
+            "🔥 Confira os detalhes do nosso próximo confronto!";
+
+
+        adversario.textContent =
+            jogo.adversario ||
+            "A definir";
+
+
+        if (
+            jogo.escudo_adversario
+        ) {
+
+            logo.src =
+                jogo.escudo_adversario;
+
+        } else {
+
+            logo.src =
+                "carrossel-fc.png";
+
+        }
+
+
+        if (
+            jogo.data_jogo
+        ) {
+
+            const dataFormatada =
+
+                new Date(
+                    jogo.data_jogo +
+                    "T00:00:00"
+                )
+
+                .toLocaleDateString(
+                    "pt-BR"
+                );
+
+
+            data.textContent =
+                "📅 Data: " +
+                dataFormatada;
+
+        }
+
+
+        if (
+            jogo.horario
+        ) {
+
+            horario.textContent =
+                "⏰ Horário: " +
+                jogo.horario.substring(
+                    0,
+                    5
+                );
+
+        }
+
+
+        if (
+            jogo.local_jogo
+        ) {
+
+            local.textContent =
+                "📍 Local: " +
+                jogo.local_jogo;
+
+        } else {
+
+            local.textContent =
+                "📍 Local: Cocal do Sul - SC";
+
+        }
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro inesperado:",
+            erro
+        );
+
+        mensagem.textContent =
+            "Ocorreu um erro ao carregar o próximo jogo.";
+
+    }
+
+}
+
+
+/* =========================
+   INICIAR SITE
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        carregarProximoJogo();
+
+    }
+);
+
 </script>
 
+
 </body>
+
 </html>
